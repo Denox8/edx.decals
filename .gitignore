@@ -10,3 +10,5 @@ out/
 # old app data (import it with scripts/migrate-from-sqlite.mjs, never commit it)
 legacy/
 *.sqlite
+
+build-log.txt

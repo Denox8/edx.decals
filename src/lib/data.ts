@@ -76,12 +76,23 @@ export const getSettings = cache(async (): Promise<Settings> => {
 
 /** Storefront: public cached read. includeHidden (admin pages): uses the signed-in admin's session. */
 export async function getProducts(options: { limit?: number; includeHidden?: boolean } = {}): Promise<Product[]> {
-  const supabase = options.includeHidden ? await createClient() : createPublicClient();
+  let supabase;
+  try {
+    supabase = options.includeHidden ? await createClient() : createPublicClient();
+  } catch (e) {
+    if (options.includeHidden) throw e;
+    console.error("[edx]", e instanceof Error ? e.message : e);
+    return [];
+  }
   let query = supabase.from("products").select(PRODUCT_SELECT).order("sort_order", { ascending: true }).order("id", { ascending: false });
   if (!options.includeHidden) query = query.eq("is_active", true);
   if (options.limit) query = query.limit(options.limit);
   const { data, error } = await query;
-  if (error) throw new Error(`Could not load products: ${error.message}`);
+  if (error) {
+    if (options.includeHidden) throw new Error(`Could not load products: ${error.message}`);
+    console.error(`[edx] Could not load products: ${error.message}`);
+    return [];
+  }
   return (data ?? []).map((r) => normalizeProduct(r as Row));
 }
 
@@ -114,9 +125,12 @@ export async function getSettingsForCheckout(): Promise<Settings> {
 }
 
 export async function getCategories(): Promise<Category[]> {
-  const supabase = createPublicClient();
-  const { data } = await supabase.from("categories").select("id, name").order("name");
-  return (data ?? []).map((c) => ({ id: Number(c.id), name: String(c.name) }));
+  try {
+    const { data } = await createPublicClient().from("categories").select("id, name").order("name");
+    return (data ?? []).map((c) => ({ id: Number(c.id), name: String(c.name) }));
+  } catch {
+    return [];
+  }
 }
 
 /** Signed URLs for private custom-order images (bucket "custom-orders"). */

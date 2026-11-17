@@ -3,15 +3,16 @@
   "version": "1.0.0",
   "private": true,
   "description": "EDX Decals sticker shop - Next.js + Supabase + PayMongo (migrated from the PHP/SQLite app)",
-  "scripts": {
+   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
+    "migrate:setup": "npm install --no-save better-sqlite3",
     "migrate:sqlite": "node scripts/migrate-from-sqlite.mjs"
   },
-  "engines": { "node": ">=18.18" },
+  "engines": { "node": "22.x" },
   "dependencies": {
     "@supabase/ssr": "^0.5.2",
     "@supabase/supabase-js": "^2.47.10",
@@ -19,13 +20,12 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
-  "devDependencies": {
-    "@types/node": "^22.10.5",
-    "@types/react": "^19.0.7",
-    "@types/react-dom": "^19.0.3",
-    "better-sqlite3": "^11.7.0",
-    "eslint": "^9.18.0",
-    "eslint-config-next": "^15.1.6",
-    "typescript": "^5.7.3"
-  }
+"devDependencies": {
+"@types/node": "^22.10.5",
+"@types/react": "^19.0.7",
+"@types/react-dom": "^19.0.3",
+"eslint": "^9.18.0",
+"eslint-config-next": "^15.1.6",
+"typescript": "^5.7.3"
+}
 }

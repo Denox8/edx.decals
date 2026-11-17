@@ -18,7 +18,6 @@
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
-import Database from "better-sqlite3";
 import { createClient } from "@supabase/supabase-js";
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1")), "..");
@@ -47,6 +46,14 @@ if (!fs.existsSync(dbFile)) {
   process.exit(1);
 }
 
+const sqlitePkg = "better-sqlite3";
+let Database;
+try {
+  Database = (await import(sqlitePkg)).default;
+} catch {
+  console.error("better-sqlite3 is not installed. Run:  npm run migrate:setup   then run this script again.");
+  process.exit(1);
+}
 const supabase = createClient(url, key, { auth: { persistSession: false } });
 const db = new Database(dbFile, { readonly: true });
 const has = (table) => Boolean(db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name=?").get(table));
