@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 640" role="img" aria-label="Logo sticker">
+  <rect width="800" height="640" rx="48" fill="#111111"/>
+  <polygon points="400,95 555,190 555,380 400,475 245,380 245,190" fill="#ff5b2e"/>
+  <circle cx="400" cy="285" r="92" fill="#fff"/>
+  <path d="M355 285l30 30 60-75" stroke="#111111" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <text x="400" y="560" font-family="Arial, sans-serif" font-size="56" text-anchor="middle" fill="#fff">BRAND READY</text>
+</svg>

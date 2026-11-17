@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 640" role="img" aria-label="Anime sticker">
+  <rect width="800" height="640" rx="48" fill="#111111"/>
+  <circle cx="260" cy="240" r="130" fill="#ff5b2e"/>
+  <circle cx="520" cy="220" r="110" fill="#ffffff"/>
+  <path d="M170 450c40-74 108-112 204-112s164 38 204 112" stroke="#fff" stroke-width="34" stroke-linecap="round" fill="none"/>
+  <text x="400" y="565" font-family="Arial, sans-serif" font-size="56" text-anchor="middle" fill="#fff">ANIME DROP</text>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 640" role="img" aria-label="Car sticker">
+  <rect width="800" height="640" rx="48" fill="#f2efe8"/>
+  <rect x="90" y="320" width="620" height="130" rx="40" fill="#111111"/>
+  <path d="M210 320l70-90h230l120 90" fill="#ff5b2e"/>
+  <circle cx="250" cy="470" r="56" fill="#111111"/>
+  <circle cx="550" cy="470" r="56" fill="#111111"/>
+  <circle cx="250" cy="470" r="26" fill="#fff"/>
+  <circle cx="550" cy="470" r="26" fill="#fff"/>
+  <text x="400" y="160" font-family="Arial, sans-serif" font-size="62" text-anchor="middle" fill="#111111">STREET RIG</text>
+</svg>

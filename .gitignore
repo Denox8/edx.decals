@@ -1,0 +1,12 @@
+node_modules/
+.next/
+out/
+.vercel/
+*.log
+.env
+.env.local
+.env.*.local
+.DS_Store
+# old app data (import it with scripts/migrate-from-sqlite.mjs, never commit it)
+legacy/
+*.sqlite
